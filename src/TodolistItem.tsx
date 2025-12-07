@@ -10,14 +10,25 @@ export type Task = {
 }
 
 export const TodolistItem = (props: Props) => {
-    const listItems = props.tasks.map(task => {
-        return (
-            <li>
-                <input type="checkbox" checked={task.isDone} />
-                <span>{task.title}</span>
-            </li>
-        )
-    })
+    const taskList = props.tasks.length === 0
+        ? <span>Create your first task</span>
+        : props.tasks.map(task => {
+            return (
+                <li>
+                    <input type="checkbox" checked={task.isDone} />
+                    <span>{task.title}</span>
+                </li>
+            )
+        })
+
+    // const listItems = props.tasks.map(task => {
+    //     return (
+    //         <li>
+    //             <input type="checkbox" checked={task.isDone} />
+    //             <span>{task.title}</span>
+    //         </li>
+    //     )
+    // })
 
     return (
         <div>
@@ -26,9 +37,7 @@ export const TodolistItem = (props: Props) => {
                 <input />
                 <button>+</button>
             </div>
-            <ul>
-                {listItems}
-            </ul>
+            {taskList}
             <div>
                 <button>All</button>
                 <button>Active</button>
