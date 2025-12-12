@@ -1,7 +1,7 @@
-export const TodoLisItems = (props: any) => {
+export const TodolistItem = () => {
     return (
         <div>
-            <h3>{props.title}</h3>
+            <h3>What to learn</h3>
             <div>
                 <input />
                 <button>+</button>
@@ -25,4 +25,3 @@ export const TodoLisItems = (props: any) => {
         </div>
     )
 }
-
