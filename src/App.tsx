@@ -1,6 +1,6 @@
 
 import './App.css'
-import { TodolistItem } from './Todolistitem'
+import { TodolistItem } from './TodolistItem'
 
 export const App = () => {
   return (
