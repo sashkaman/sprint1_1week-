@@ -18,15 +18,11 @@ export const App = () => {
     { id: 6, title: 'RTK query', isDone: false },
   ]
 
-  const tasks2: Task[] = [
-    { id: 1, title: 'Hello world', isDone: true },
-    { id: 2, title: 'I am Happy', isDone: true },
-    { id: 3, title: 'Yo', isDone: false },
-  ]
+  const tasks2: Task[] = []
 
   return (
     <div className="app">
-      <TodolistItem title="What to learn" tasks={tasks1} date="24.012027" />
+      <TodolistItem title="What to learn" tasks={tasks1} />
       <TodolistItem title="Songs" tasks={tasks2} />
     </div>
   )
