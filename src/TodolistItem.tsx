@@ -1,13 +1,13 @@
+import { Task } from "./App"
+
 type Props = {
     title: string
-    subTitle: string
-    description: string
     tasks: Task[]
 }
 
-export const TodolistItem = ({ title, subTitle, description, tasks }: Props) => {
+export const TodolistItem = ({ title, tasks }: Props) => {
 
-    // const { title, subTitle, description, tasks } = props
+    // const { title, tasks } = props
 
     return (
         <div>
@@ -17,15 +17,20 @@ export const TodolistItem = ({ title, subTitle, description, tasks }: Props) => 
                 <button>+</button>
             </div>
             <ul>
-                <li>
-                    <input type="checkbox" checked={true} /> <span>HTML&CSS</span>
-                </li>
-                <li>
-                    <input type="checkbox" checked={true} /> <span>JS</span>
-                </li>
-                <li>
-                    <input type="checkbox" checked={false} /> <span>React</span>
-                </li>
+                <ul>
+                    <li>
+                        <input type="checkbox" checked={tasks[0].isDone} />
+                        <span>{tasks[0].title}</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked={tasks[1].isDone} />
+                        <span>{tasks[1].title}</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" checked={tasks[2].isDone} />
+                        <span>{tasks[2].title}</span>
+                    </li>
+                </ul>
             </ul>
             <div>
                 <button>All</button>
