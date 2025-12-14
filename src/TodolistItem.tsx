@@ -16,6 +16,7 @@ export const TodolistItem = ({ title, tasks, date }: Props) => {
                 <input />
                 <button>+</button>
             </div>
+
             <ul>
                 {tasks.map(task => {
                     return (
@@ -26,11 +27,13 @@ export const TodolistItem = ({ title, tasks, date }: Props) => {
                     )
                 })}
             </ul>
+
             <div>
                 <button>All</button>
                 <button>Active</button>
                 <button>Completed</button>
             </div>
+
             <div>{date}</div>
         </div>
     )
