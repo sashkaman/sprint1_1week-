@@ -1,3 +1,4 @@
+import { ChangeEvent, useState, KeyboardEvent } from 'react'
 import { FilterValues, Task } from './App'
 import './App.css'
 import { Button } from './Button'
@@ -7,26 +8,61 @@ export type Props = {
     tasks: Task[]
     deleteTask: (taskId: string) => void
     changeFilter: (filter: FilterValues) => void
-    creatTask: () => void
+    createTask: (title: string) => void
 }
 
-export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, creatTask }: Props) => {
+export const TodolistItem = ({ title, tasks, deleteTask, changeFilter, createTask }: Props) => {
+
+    // const inputRef = useRef<HTMLInputElement>(null)
+
+    const [taskTitle, setTaskTitle] = useState('')
+
+    const createTaskHandler = () => {
+        createTask(taskTitle)
+        setTaskTitle('')
+    }
+
+    const changeTaskTitleHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        setTaskTitle(event.currentTarget.value)
+    }
+
+    const createTaskOnEnterHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            createTaskHandler()
+        }
+    }
+
     return (
         <div className="app">
             <div>
                 <h3>{title}</h3>
                 <div>
-                    <input />
-                    <Button title={'+'} onClick={creatTask} />
+                    <input value={taskTitle}
+                        onChange={changeTaskTitleHandler}
+                        onKeyDown={createTaskOnEnterHandler} />
+
+                    <Button title={'+'}
+                        onClick={() => { createTaskHandler() }} />
+                    {/* <Button title={'+'}
+                        onClick={() => {
+                            if (inputRef.current) {
+                                createTask(inputRef.current.value)
+                                inputRef.current.value = ''
+                            }
+                        }} /> */}
                 </div>
                 <ul>
                     {tasks.length === 0 ? <p>Тасок нет</p> :
                         tasks.map(task => {
+                            const deleteTaskHandler = () => {
+                                deleteTask(task.id)
+                            }
+
                             return (
                                 <li key={task.id}>
                                     <input type="checkbox" checked={task.isDone} />
                                     <span>{task.title}</span>
-                                    <Button title={'x'} onClick={() => deleteTask(task.id)} />
+                                    <Button title={'x'} onClick={deleteTaskHandler} />
                                 </li>
                             )
                         })}

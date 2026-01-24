@@ -22,8 +22,8 @@ export const App = () => {
     { id: v1(), title: 'Redux', isDone: false },
   ])
 
-  const creatTask = () => {
-    const newTask = { id: v1(), title: 'New task', isDone: false }
+  const createTask = (title: string) => {
+    const newTask = { id: v1(), title, isDone: false }
     const newTasks = [newTask, ...tasks]
     setTasks(newTasks)
   }
@@ -40,7 +40,7 @@ export const App = () => {
     filteredTasks = tasks.filter(task => task.isDone)
   }
 
-  const deleteTask = (taskId: number) => {
+  const deleteTask = (taskId: string) => {
     const filteredTasks = tasks.filter(task => {
       return task.id !== taskId
     })
@@ -53,7 +53,7 @@ export const App = () => {
         tasks={filteredTasks}
         deleteTask={deleteTask}
         changeFilter={changeFilter}
-        creatTask={creatTask} />
+        createTask={createTask} />
     </div>
   )
 }
