@@ -7,7 +7,6 @@
 }
 
 body {
-  background-color: tomato;
   margin: 0;
   display: flex;
   min-width: 320px;
